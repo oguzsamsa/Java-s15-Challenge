@@ -6,8 +6,8 @@ import com.workintech.library.people.Author;
 import java.util.List;
 
 public interface BookSelection {
-    Book selectBookById(int id);
-    Book selectBookByName(String name);
-    List<Book> selectBooksByAuthor(Author author);
+    void selectBookById(int id);
+    void selectBookByName(String name);
+
 
 }

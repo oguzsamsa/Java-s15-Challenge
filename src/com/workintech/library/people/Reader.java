@@ -35,11 +35,11 @@ public class Reader extends Person {
 
     public void borrowBook(Book book) {
         if(book.isAvailable()){
-            if(borrowedBooks.size() < borrowLimit){
+            if(borrowLimit > 0){
                 borrowedBooks.add(book);
                 book.setAvailable(false);
-                System.out.println("Book borrowed: " + book.getTitle());
                 borrowLimit--;
+
             } else {
                 System.out.println("Borrow limit reached. Can't borrow more books.");
             }
@@ -51,7 +51,6 @@ public class Reader extends Person {
     public void returnBook(Book book) {
         borrowedBooks.remove(book);
         book.setAvailable(true);
-        System.out.println("Book returned: " + book.getTitle());
         borrowLimit++;
     }
 
@@ -64,6 +63,10 @@ public class Reader extends Person {
                 System.out.println("- " + book.getTitle());
             }
         }
+    }
+
+    public void showBorrowLimit(){
+        System.out.println(getFirstName() + " " + getLastName() + "'s remaining borrow limit is: " + getBorrowLimit());
     }
 
     @Override
